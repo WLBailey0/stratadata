@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.0.212:5432/chem_det_dev
+    username: postgres
+    password: katnis
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+queso:
+  app:
+    jwtSecret: baileyAppJwtSecretKey
+    jwtExpirationMs: 86400000
