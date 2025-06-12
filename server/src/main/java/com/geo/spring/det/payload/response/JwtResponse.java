@@ -1,13 +1,19 @@
 package com.geo.spring.det.payload.response;
 
 import com.geo.spring.det.models.Login;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 public class JwtResponse {
 	private String token;
 	private String type = "Bearer";
-	private Login userResponse;
+	@Setter
+    @Getter
+    private Login userResponse;
 
 	public JwtResponse(String accessToken, Login userResponse){//Long id, String username, String email, List<String> roles) {
 		this.token = accessToken;
@@ -29,52 +35,19 @@ public class JwtResponse {
 	public void setTokenType(String tokenType) {
 		this.type = tokenType;
 	}
-	public Login getUserResponse(){
-		return userResponse;
-	}
-	public void setUserResponse(Login userResponse){
-		this.userResponse = userResponse;
-	}
 
-	static class UserResponse {
-		private Long id;
-		private String username;
-		private String email;
+	@Getter
+	@Setter
+	@AllArgsConstructor
+	@NoArgsConstructor
+    static class UserResponse {
+		@Setter
+        private Long id;
+		@Setter
+        private String username;
+		@Setter
+        private String email;
 		private List<String> roles;
 
-		UserResponse(Long id, String username, String email, List<String> roles){
-			this.id = id;
-			this.username = username;
-			this.email = email;
-			this.roles = roles;
-		}
-
-		public Long getId() {
-			return id;
-		}
-
-		public void setId(Long id) {
-			this.id = id;
-		}
-
-		public String getEmail() {
-			return email;
-		}
-
-		public void setEmail(String email) {
-			this.email = email;
-		}
-
-		public String getUsername() {
-			return username;
-		}
-
-		public void setUsername(String username) {
-			this.username = username;
-		}
-
-		public List<String> getRoles() {
-			return roles;
-		}
 	}
 }

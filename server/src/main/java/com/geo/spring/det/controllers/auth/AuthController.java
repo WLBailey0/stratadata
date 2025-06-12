@@ -1,5 +1,6 @@
-package com.geo.spring.det.controllers;
+package com.geo.spring.det.controllers.auth;
 
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -120,6 +121,8 @@ public class AuthController {
 			});
 		}
 
+		ZonedDateTime createdAt = ZonedDateTime.now();
+		user.setCreate_ts(createdAt);
 		user.setRoles(roles);
 		userRepository.save(user);
 
