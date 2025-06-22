@@ -18,21 +18,25 @@ function Login() {
 
     function callLogin(param1, param2){
         console.log("call login endpoint")
-        const singIn = userSignIn(
+        userSignIn(
             param1, 
             param2,
             (response) => {
-                console.log(response?.data)
+                console.log(response)
                 localStorage.setItem("ethmToken", response.data.accessToken)
                 setUserAuthentication();
+                if(response?.status === 200  ){
+                    navigate("/")
+                }
+                setPassword('')
+                setUsername('')
             } ,
             (err) => {
                 handleError(err)
             }
         )
-        setPassword('')
-        setUsername('')
-        navigate('/')
+
+
 
     }
 
